@@ -12,6 +12,7 @@ git checkout -b ft/docker
 git add . 
 git commit -m "updated readme"
 git push origin ft/docker; #copy remote url then paste to browser, click Create pull request, then you'll see Workflow running
+# Click Merge pull request, Confirm merge, Delete branch
 
 
 
