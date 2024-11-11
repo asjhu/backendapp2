@@ -13,6 +13,7 @@ git add .
 git commit -m "updated readme"
 git push origin ft/docker; #copy remote url then paste to browser, click Create pull request, then you'll see Workflow running
 # Click Merge pull request, Confirm merge, Delete branch
+# git checkout -b ft/ci-build-image, git push origin ft/ci-build-image, click Create pull requests, base=master > compare > select ft/ci-build-image, Create pull request
 
 
 
