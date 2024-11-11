@@ -11,21 +11,9 @@ go mod tidy
 git checkout -b ft/docker
 git add . 
 git commit -m "updated readme"
-git push origin ft/docker
+git push origin ft/docker; #copy remote url then paste to browser, click Create pull request, then you'll see Workflow running
 
-migrate -version
-migrate create -ext sql -dir db/migration -seq init_schema
-make dropdb
-migrate -path db/migration -database "postgresql://root:secret@localhost:5432/backend?sslmode=disable" -verbose up
-make migratedown; make migrateup
-sqlc version; sqlc init
-go get github.com/lib/pq # go get github.com/lib/pq
-go get github.com/stretchr/testify  # https://github.com/stretchr/testify
-go get -u github.com/gin-gonic/gin
-make server
-make test # to create more account
-go get github.com/spf13/viper
-SERVER_ADDRESS=0.0.0.0:8081 make server # to test temp env variable
+
 
 ```
 ### test to run ci
