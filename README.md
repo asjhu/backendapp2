@@ -1,52 +1,3 @@
-name: ci-test
-
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
-jobs:
-
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-
-    services:
-      postgres:
-        image: postgres:17
-        env:
-          POSTGRES_USER: root
-          POSTGRES_PASSWORD: secret
-          POSTGRES_DB: backend
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    steps:
-    - uses: actions/checkout@v3
-
-    - name: Set up Go
-      uses: actions/setup-go@v3
-      with:
-        go-version: ^1.22
-      id: go
-    - name: Install golang-migrate
-      run: |
-        curl -L https://github.com/golang-migrate/migrate/releases/download/v4.18.1/migrate.linux-amd64.tar.gz | tar xvz
-        sudo mv migrate /usr/bin/
-        which migrate
-    - name: Run migration
-      run: make migrateup
-
-    - name: Test
-      run: make test
-
-
-
 ##### Install migrate https://github.com/golang-migrate/migrate/tree/master > CLI Documentation
 ##### Installation>Downloads>Linux, extract, move /usr/local/bin: https://github.com/kyleconroy/sqlc
 ```sh
@@ -57,7 +8,10 @@ make createdb
 make migrateup
 go mod init github.com/asjhu/backendapp
 go mod tidy
-
+git checkout -b ft/docker
+git add . 
+git commit -m "updated readme"
+git push origin ft/docker
 
 migrate -version
 migrate create -ext sql -dir db/migration -seq init_schema
