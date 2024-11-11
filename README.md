@@ -14,11 +14,11 @@ jobs:
 
     services:
       postgres:
-        image: postgres:15
+        image: postgres:17
         env:
           POSTGRES_USER: root
           POSTGRES_PASSWORD: secret
-          POSTGRES_DB: app3
+          POSTGRES_DB: backend
         ports:
           - 5432:5432
         options: >-
@@ -32,7 +32,7 @@ jobs:
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
-        go-version: ^1.20
+        go-version: ^1.22
       id: go
     - name: Install golang-migrate
       run: |
