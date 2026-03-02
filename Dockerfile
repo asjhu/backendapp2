@@ -1,5 +1,5 @@
 # Build stage
-FROM golang:1.22-alpine3.20 AS builder
+FROM golang:1.25.7-alpine3.23 AS builder
 WORKDIR /app
 COPY . .
 RUN go build -o main main.go
