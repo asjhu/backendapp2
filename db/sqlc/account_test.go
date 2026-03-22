@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/asjhu/backendapp/util"
+	"github.com/asjhu/backendapp2/util"
 	"github.com/stretchr/testify/require"
 )
 

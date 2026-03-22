@@ -4,9 +4,9 @@ import (
 	"database/sql"
 	"log"
 
-	"github.com/asjhu/backendapp/api"
-	db "github.com/asjhu/backendapp/db/sqlc"
-	"github.com/asjhu/backendapp/util"
+	"github.com/asjhu/backendapp2/api"
+	db "github.com/asjhu/backendapp2/db/sqlc"
+	"github.com/asjhu/backendapp2/util"
 	_ "github.com/lib/pq"
 )
 

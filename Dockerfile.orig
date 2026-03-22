@@ -1,0 +1,24 @@
+# -- STAGE 1: Get the migrate binary --
+FROM migrate/migrate:v4.19.1 AS migrate-bin
+
+# Build stage
+FROM golang:1.26.1-alpine3.23 AS builder
+WORKDIR /app
+COPY . .
+RUN go build -o main main.go
+
+# Run stage
+FROM alpine:3.23
+WORKDIR /app
+COPY --from=migrate-bin /usr/bin/migrate ./migrate
+COPY --from=builder /app/main .
+COPY app.env .
+COPY start.sh .
+RUN chmod +x start.sh
+COPY wait-for.sh .
+COPY db/migration ./db/migration
+RUN chmod +x start.sh wait-for.sh migrate
+RUN apk add --no-cache ca-certificates libc6-compat
+EXPOSE 8080
+CMD [ "/app/main" ]
+ENTRYPOINT [ "/app/start.sh" ]
