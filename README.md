@@ -18,6 +18,7 @@ docker run -it --entrypoint /bin/sh imageID
 
 docker run --name backend -p 8080:8080 backend:latest
 
+# AWS RDS postgres create db simple_bacend then run migrate
 ```
 ### test to run ci
 ##### Github actions postgres: https://docs.github.com/en/actions/using-containerized-services/creating-postgresql-service-containers
